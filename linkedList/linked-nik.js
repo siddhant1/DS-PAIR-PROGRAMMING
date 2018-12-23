@@ -56,6 +56,30 @@ class LinkedList {
     return values.join(" --> ");
   }
 
+  insert(index, value) {
+    if (this.length === 0) {
+      this.unshift(value);
+    }
+
+    if (this.length - 1 === index) {
+      this.push(value);
+    }
+
+    let prev = this.head;
+    let current = prev.next;
+    let counter = 0;
+    while (counter < index - 1) {
+      prev = prev.next;
+      counter++;
+    }
+    current = prev.next;
+    let node = new Node(value);
+    node.next = current;
+    prev.next = node;
+    this.length++;
+    return node;
+  }
+
   push(value) {
     let node = new Node(value);
     if (this.length === 0) {
@@ -76,6 +100,12 @@ class LinkedList {
 let l = new LinkedList(1);
 l.unshift(2);
 l.push(3);
+l.push(5);
+l.push(7);
+l.push(8);
+l.push(9);
+l.push(10);
 l.pop();
 l.pop();
+l.insert(2, 1000);
 console.log(l.print());
