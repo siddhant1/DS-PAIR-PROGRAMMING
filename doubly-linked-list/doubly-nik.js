@@ -54,6 +54,46 @@ class DoublyLinkedList{
 
     }
 
+    insert(index,value){
+
+        let node= new Node(value);
+        if(index==0){
+            node.next=this.head;
+            this.head.prev=node;
+            this.head=node;
+        }
+        if(this.length==0){
+            this.head=node;
+            this.tail=this.head;
+            this.length=1;
+            return this;
+        }
+
+        if(this.length==index-1){
+            doubly.push(value);
+        }
+
+       
+        let current= this.head;
+        for(let i=0;i<index-1;i++){
+            current=current.next;
+        }
+        let nextNode=current.next;
+        node.prev=current;
+        current.next=node;
+        node.next=nextNode;
+        current=nextNode;
+        current.prev=node;
+        this.length++;
+        return this;
+
+    }
+
+    delete(){
+
+
+    }
+
     printRev(){
 
         let values = [];
@@ -84,5 +124,7 @@ console.log(doubly);
 doubly.pop();
 doubly.push(5).push(6);
 console.log(doubly.printRev());
+doubly.insert(0,10);
+console.log(doubly.print());
 
 
