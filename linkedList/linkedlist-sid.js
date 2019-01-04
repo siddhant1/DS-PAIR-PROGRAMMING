@@ -129,6 +129,23 @@ class LinkedList {
       return;
     }
   }
+  reverse() {
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+    let next = node.next;
+    let prev = null;
+    while (node !== null) {
+      node.next = prev;
+      prev = node;
+      node = next;
+      if (node === null) {
+        break;
+      }
+      next = node.next;
+    }
+    this.tail = next;
+  }
 
   print() {
     let values = [];
@@ -154,5 +171,7 @@ l.set(3, 5);
 l.insert(2, 100);
 l.insert(2, 101);
 l.remove(4);
+l.push(300);
 console.log(l.print());
-console.log(l.get(3));
+l.reverse();
+console.log(l.print());
