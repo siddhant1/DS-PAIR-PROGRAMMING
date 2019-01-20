@@ -52,6 +52,35 @@ class Tree{
             currentNode=queue.dequeue();
         }
     }
+
+    contains(data){
+
+        var isFound=false;
+        if(this.root.data==data){
+            return true;
+        }
+
+       
+        (function traverse(currentNode){
+
+            if(currentNode.data==data){
+                console.log(currentNode.data);
+                isFound=true;
+                return isFound;
+            }
+           
+            for(let i=0,length=currentNode.children.length;i<length;i++){
+                
+               traverse(currentNode.children[i]);
+            }
+
+           
+            
+        })(this.root);
+        return isFound;
+
+        
+    }
 }
 
 var tree = new Tree('one');
@@ -78,3 +107,4 @@ tree.root.children[2].children[0].parent = tree.root.children[2];
 
 tree.traverseDF();
 tree.traverseBF();
+console.log(tree.contains('seven'));
