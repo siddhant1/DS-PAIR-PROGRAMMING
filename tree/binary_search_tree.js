@@ -13,7 +13,13 @@ class BinarySearchTree{
         this.root=new Node(value);
     }
 
+    getRoot(){
+        return this.root;
+    }
+
+
     contains(value){
+        
         let current=this.root;
 
         if(value==this.root.data){
@@ -74,12 +80,51 @@ class BinarySearchTree{
             }
     
         }
+
+        inorder(node){
+            if(node){
+               
+              //inorder(node.left);
+              BinarySearchTree.prototype.inorder(node.left);
+               console.log(node.data);
+               BinarySearchTree.prototype.inorder(node.right);
+            }
+         }
+
+         preorder(node){
+            if(node){
+            
+                console.log(node.data);
+                BinarySearchTree.prototype.preorder(node.left);
+                 BinarySearchTree.prototype.preorder(node.right);
+              }
+
+         }
+
+         postorder(node){
+            if(node){
+            
+               
+                BinarySearchTree.prototype.postorder(node.left);
+                 BinarySearchTree.prototype.postorder(node.right);
+                 console.log(node.data);
+              }
+
+         }
+
+
     }
 
-    let bst=new BinarySearchTree(1);
-    bst.add(2);
-    bst.add(5);
-    console.log(bst.contains(2));
+    let bst=new BinarySearchTree(40);
+    bst.add(25);
+    bst.add(10);
+    bst.add(32);
+    bst.add(78);
+    console.log(bst.contains(32));
+    bst.inorder(bst.getRoot());
+    bst.preorder(bst.getRoot());
+    bst.postorder(bst.getRoot());
+    
 
 
 
