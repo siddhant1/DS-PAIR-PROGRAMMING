@@ -17,6 +17,64 @@ class BinarySearchTree{
         return this.root;
     }
 
+    getParent(data){
+
+        if(this.root.left.data==data || this.root.right.data==data){
+            return this.root;
+        }
+
+        BinarySearchTree.prototype.inorder(node.left);
+        console.log(node.data);
+        if(node.left.data==data || node.right.data==data){
+            return node;
+        }
+        else{
+            BinarySearchTree.prototype.inorder(node.right);
+        }
+        
+
+    }
+
+    remove(data){
+        BinarySearchTree.prototype.inorder(node.left);
+               console.log(node.data);
+               if(node.data==data){
+                   if(!node.left && !node.right){    //case for leaf node
+                      let parent= BinarySearchTree.prototype.getParent(node);
+                      if(parent.left.data==node.data){
+                          parent.left=null;
+                      }
+
+                      if(parent.right.data==node.data){
+                          parent.right=null;
+                      }
+                   }
+
+                   else if(node.left && node.right){ //case for two subtrees
+
+                    
+                   }
+
+                   else{  //case for 1 subtree
+                   let child= node.left?node.left:node.right;
+                   if(node.left){
+                       node.left=null;
+                   }
+                   else{
+                    node.right=null;
+                   }
+                   node=child;
+
+                   }
+
+
+               }
+               else{
+                BinarySearchTree.prototype.inorder(node.right);
+               }
+        
+    }
+
 
     contains(value){
         
@@ -124,6 +182,7 @@ class BinarySearchTree{
     bst.inorder(bst.getRoot());
     bst.preorder(bst.getRoot());
     bst.postorder(bst.getRoot());
+    console.log(bst.getParent(25).data);
     
 
 
