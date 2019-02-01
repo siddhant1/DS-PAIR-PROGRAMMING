@@ -10,6 +10,7 @@ class BinarySearchTree{
     
     constructor(value){
 
+        this.arr=[];
         this.root=new Node(value);
     }
 
@@ -36,42 +37,60 @@ class BinarySearchTree{
     }
 
     remove(data){
-        BinarySearchTree.prototype.inorder(node.left);
-               console.log(node.data);
-               if(node.data==data){
-                   if(!node.left && !node.right){    //case for leaf node
-                      let parent= BinarySearchTree.prototype.getParent(node);
-                      if(parent.left.data==node.data){
-                          parent.left=null;
-                      }
+        // let node=this.root;
+        // BinarySearchTree.prototype.inorder(node.left);
+        //        console.log(node.data);
+        //        if(node.data==data){
+        //            if(!node.left && !node.right){    //case for leaf node
+        //               let parent= BinarySearchTree.prototype.getParent(node.data);
+        //               if(parent.left.data==node.data){
+        //                   parent.left=null;
+        //               }
 
-                      if(parent.right.data==node.data){
-                          parent.right=null;
-                      }
-                   }
+        //               if(parent.right.data==node.data){
+        //                   parent.right=null;
+        //               }
+        //            }
 
-                   else if(node.left && node.right){ //case for two subtrees
+        //            else if(node.left && node.right){ //case for two subtrees
 
-                    
-                   }
-
-                   else{  //case for 1 subtree
-                   let child= node.left?node.left:node.right;
-                   if(node.left){
-                       node.left=null;
-                   }
-                   else{
-                    node.right=null;
-                   }
-                   node=child;
-
-                   }
+        //             BinarySearchTree.prototype.inorder(node.left);
+        //             console.log(node.data);
+        //             this.arr.push(node);
+        //             BinarySearchTree.prototype.inorder(node.right);
 
 
-               }
-               else{
-                BinarySearchTree.prototype.inorder(node.right);
-               }
+        //             //find inorder successor
+        //             let successor=null;
+        //             for(let i=0;i<this.arr.length;i++){
+        //                 if(this.arr[i].data==node.data){
+        //                     successor=this.arr[i+1];
+        //                 }
+        //             }
+
+        //             let parent=BinarySearchTree.prototype.getParent(successor.data);
+        //             parent=successor;
+        //             BinarySearchTree.prototype.remove(successor.data);
+
+        //            }
+
+        //            else{  //case for 1 subtree
+        //            let child= node.left?node.left:node.right;
+        //            if(node.left){
+        //                node.left=null;
+        //            }
+        //            else{
+        //             node.right=null;
+        //            }
+        //            node=child;
+
+        //            }
+
+
+        //        }
+        //        else{
+        //         BinarySearchTree.prototype.inorder(node.right);
+        //        }
         
     }
 
@@ -183,6 +202,9 @@ class BinarySearchTree{
     bst.preorder(bst.getRoot());
     bst.postorder(bst.getRoot());
     console.log(bst.getParent(25).data);
+    console.log(bst.contains(78));
+    bst.remove(78);
+    
     
 
 
